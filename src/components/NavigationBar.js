@@ -14,7 +14,6 @@ function NavigationBar() {
               <NavDropdown.Item href="/trackexpenditure">Track Expenditure</NavDropdown.Item>
               <NavDropdown.Item href="/equity-split">Optimize expenditure</NavDropdown.Item>
               <NavDropdown.Item href="/client-data">Monitor Savings</NavDropdown.Item>
-              <NavDropdown.Item href="/employee-data">Upload new data</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/bpmn">
                 Forecast Expenditure, Assets value and Savings
