@@ -1,3 +1,21 @@
+# Submission of team pir8s to Devfolio<>StrangerHacks
+**The idea:** We want to build a *one stop AI powered finance tool* for startups and individuals alike that helps users understand their finances and makes it easier to interact with their data.
+
+**The problem** we aim to solve is the lack of an accessible and user-friendly finance management tool that incorporates AI technology to help individuals and startups track their expenditures, cut unnecessary costs, monitor their savings, and forecast their financial status accurately. Our goal is to make it easier for users to interact with their financial data and gain a better understanding of their finances to make informed decisions about their financial future. This tool will help users to cut costs wherever possible and also help them understand a lot about their savings.
+
+**Outcomes**:
+
+ - **Increase in accuracy and transparency when tracking spending:**
+Al-driven data analysis enables organizations/individuals to analyze spending in real-time, track spending patterns, identify anomalies, and prevent fraudulent behavior. This increases the accuracy and transparency of financial tracking and can even help provide valuable insights on expenditure trends.
+- **Automated financial reporting and analysis:** Al-powered tools can automatically generate financial reports and analysis. This can help reduce manual work and gain a better understanding of the finances at hand.
+
+This is what we plan to implement.
+1. Track Expenditure
+2. Optimize Expenditure
+3. Monitor Savings
+4. Forecast Expenditure, Assets and Savings
+5. Wrap it all up using React and bootstrap -> host on vercel.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
