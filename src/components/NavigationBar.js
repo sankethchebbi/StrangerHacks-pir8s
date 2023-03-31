@@ -1,6 +1,6 @@
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 
-function NavigationBar() {
+export default function NavigationBar() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -11,11 +11,11 @@ function NavigationBar() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/implementation">Implementation</Nav.Link>
             <NavDropdown title="Our Products" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/trackexpenditure">Track Expenditure</NavDropdown.Item>
-              <NavDropdown.Item href="/equity-split">Optimize expenditure</NavDropdown.Item>
-              <NavDropdown.Item href="/client-data">Monitor Savings</NavDropdown.Item>
+              <NavDropdown.Item href="/track">Track Expenditure</NavDropdown.Item>
+              <NavDropdown.Item href="/optimize">Optimize expenditure</NavDropdown.Item>
+              <NavDropdown.Item href="/monitor">Monitor Savings</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/bpmn">
+              <NavDropdown.Item href="/forecast">
                 Forecast Expenditure, Assets value and Savings
               </NavDropdown.Item>
             </NavDropdown>
@@ -26,5 +26,4 @@ function NavigationBar() {
   );
 }
 
-export default NavigationBar;
 
