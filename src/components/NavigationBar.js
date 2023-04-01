@@ -14,7 +14,6 @@ export default function NavigationBar() {
               <NavDropdown.Item href="/track">Track Expenditure</NavDropdown.Item>
               <NavDropdown.Item href="/optimize">Optimize expenditure</NavDropdown.Item>
               <NavDropdown.Item href="/monitor">Monitor Savings</NavDropdown.Item>
-              <NavDropdown.Divider />
               <NavDropdown.Item href="/forecast">
                 Forecast Expenditure, Assets value and Savings
               </NavDropdown.Item>
@@ -25,8 +24,8 @@ export default function NavigationBar() {
       
 
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Ask CashChat about your finances" aria-label="Search" style={{width: '300px'}}/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        {/* <input class="form-control me-2" type="search" placeholder="Ask CashChat about your finances" aria-label="Search" style={{width: '300px'}}/> */}
+        <button class="btn btn-outline-success" href="/cashchat" type="submit">Ask CashChat.ai</button>
       </form>
 
 

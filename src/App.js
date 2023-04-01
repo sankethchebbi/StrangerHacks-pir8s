@@ -7,6 +7,7 @@ import Track from './components/navComponents/track';
 import Monitor from './components/navComponents/monitor';
 import Optimize from './components/navComponents/optimize';
 import Forecast from './components/navComponents/forecast';
+import MyCard from './components/navComponents/cashchatAI';
 
 import './App.css';
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/monitor" element={<Monitor />} />
           <Route path="/optimize" element={<Optimize />} />
           <Route path="/forecast" element={<Forecast />} />
+          <Route path="/cashchat" element={<MyCard />} />
         </Routes>
       </main>
     </Router>
