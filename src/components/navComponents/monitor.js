@@ -1,72 +1,47 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, ProgressBar } from 'react-bootstrap';
 
-const Monitor = () => {
-  const [input, setInput] = useState('');
-  const [output, setOutput] = useState('');
-  const apikey = "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";
+function Monitor() {
+  const [goal, setGoal] = useState(0);
+  const [savings, setSavings] = useState(0);
 
-  const handleInputChange = (event) => {
-    setInput(event.target.value);
-  };
+  function updateSavings(amount) {
+    setSavings(amount);
+  }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  function updateGoal(amount) {
+    setGoal(amount);
+  }
 
-    // Set up OpenAI API request
-    const prompt = input.trim();
-    const url = 'https://api.openai.com/v1/engines/davinci-codex/completions';
-    const headers = {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apikey}`,
-    };
-    const data = JSON.stringify({
-      prompt,
-      max_tokens: 50,
-      n: 1,
-      stop: '\n',
-    });
-
-    console.log('Sending request:', data);
-
-    // Send OpenAI API request
-    const response = await fetch(url, {
-      method: 'POST',
-      headers,
-      body: data,
-    });
-
-    console.log('Response:', response);
-
-    const responseData = await response.json();
-    const outputText = responseData.choices[0].text.trim();
-    console.log('Output text:', outputText);
-
-    // Update state with API response
-    setInput('');
-    setOutput(output + '\n' + prompt + '\n' + outputText);
-  };
+  function calculatePercentage() {
+    return Math.floor((savings / goal) * 100);
+  }
 
   return (
-    <Container>
-      <Row>
-        <Col>
-          <h1>Monitor with MonitorGPT</h1>
-          <p>Type your message below:</p>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <Form.Control type="text" value={input} onChange={handleInputChange} />
-            </Form.Group>
-            <Button variant="primary" type="submit">Send</Button>
-          </Form>
-        </Col>
-        <Col>
-          <h1>Conversation</h1>
-          <pre>{output}</pre>
-        </Col>
-      </Row>
+    <Container className="d-flex flex-column justify-content-center align-items-center">
+      <h1 className="mb-4">Goal Setting</h1>
+      <Form>
+        <Row className="mb-3">
+          <Form.Label column sm="4">
+            Enter your savings goal:
+          </Form.Label>
+          <Col sm="8">
+            <Form.Control type="number" onChange={(e) => updateGoal(e.target.value)} />
+          </Col>
+        </Row>
+        <Row className="mb-3">
+          <Form.Label column sm="4">
+            Enter your current savings:
+          </Form.Label>
+          <Col sm="8">
+            <Form.Control type="number" onChange={(e) => updateSavings(e.target.value)} />
+          </Col>
+        </Row>
+      </Form>
+      <p className="mt-4">Progress towards goal:</p>
+      <ProgressBar now={calculatePercentage()} label={`${calculatePercentage()}%`} className="w-50" />
     </Container>
   );
-};
+}
 
 export default Monitor;

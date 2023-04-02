@@ -44,7 +44,7 @@ const { Configuration, OpenAIApi } = require("openai");
 const data = require("./data.json");
 
 const config = new Configuration({
-  apiKey: "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",
+  apiKey: "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",
 });
 
 const openai = new OpenAIApi(config);
