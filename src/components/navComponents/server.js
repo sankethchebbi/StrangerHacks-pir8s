@@ -1,88 +1,36 @@
-// const express = require("express");
+const express = require('express');
+const openai = require('openai');
+const cors = require('cors');
 
-// const cors = require("cors");
-
-// const bodyParser = require("body-parser");
-
-// const { Configuration, OpenAIApi } = require("openai");
-
-// const config = new Configuration({
-//   apiKey: "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",
-// });
-
-// const openai = new OpenAIApi(config);
-
-// // Setup server
-
-// const app = express();
-// app.use(bodyParser.json());
-// app.use(cors());
-
-// // endpoint for ChatGPT
-
-// app.post("/chat", async (req, res) => {
-//   const { prompt } = req.body;
-
-//   const completion = await openai.createCompletion({
-//     model: "text-davinci-003",
-//     max_tokens: 512,
-//     temperature: 0,
-//     prompt: prompt,
-//   });
-//   res.send(completion.data.choices[0].text);
-// });
-
-// const PORT = 8080;
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port: ${PORT}`);
-// });
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const { Configuration, OpenAIApi } = require("openai");
-const data = require("./data.json");
-
-const config = new Configuration({
-  apiKey: "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",
-});
-
-const openai = new OpenAIApi(config);
-
-// Setup server
+openai.apiKey = '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';
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
-// endpoint for ChatGPT
+app.post('/ask', async (req, res) => {
+  const question = req.body.question;
+  const data = req.body.data;
 
-app.post("/chat", async (req, res) => {
-  const { prompt } = req.body;
+  const dataStr = JSON.stringify(data, null, 2);
+  const conversationInput = `Here is the JSON data:\n${dataStr}\n\nNow, I have a question about the data: ${question}`;
 
-  // Access data from data.json
-  const categories = data.categories;
-  const expenses = data.expenses;
+  try {
+    const response = await openai.Completion.create({
+      engine: 'text-davinci-002',
+      prompt: conversationInput,
+      max_tokens: 50,
+      n: 1,
+      stop: null,
+      temperature: 0.5,
+    });
 
-  // Perform calculations using data
-  const chartData = categories.map((category) => ({
-    name: category.name,
-    amount: expenses
-      .filter((expense) => expense.category === category.id)
-      .reduce((total, expense) => total + expense.amount, 0),
-  }));
-
-  const completion = await openai.createCompletion({
-    model: "text-davinci-003",
-    max_tokens: 512,
-    temperature: 0,
-    prompt: prompt,
-  });
-  res.send(completion.data.choices[0].text);
+    res.json({ answer: response.choices[0].text.trim() });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to get answer from OpenAI API' });
+  }
 });
 
-const PORT = 8080;
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
-});
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

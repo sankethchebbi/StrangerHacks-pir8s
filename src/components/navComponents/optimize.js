@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
+import Monitor from "./monitor";
 
 const ExpenseCategories = () => {
   const [expenses, setExpenses] = useState([]);
@@ -42,6 +43,7 @@ const ExpenseCategories = () => {
   };
 
   return (
+    <div>
     <Container>
       <h1>Expense Categories</h1>
       <Form onSubmit={handleSubmit}>
@@ -119,6 +121,8 @@ const ExpenseCategories = () => {
 </>
 )}
 </Container>
+<Monitor/><br></br>
+</div>
 );
 };
 export default ExpenseCategories;
