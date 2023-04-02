@@ -1,4 +1,5 @@
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export default function NavigationBar() {
   return (
@@ -17,11 +18,15 @@ export default function NavigationBar() {
               <NavDropdown.Item href="/forecast">
                 Forecast Expenditure, Assets value and Savings
               </NavDropdown.Item>
-              <NavDropdown.Item href="/cashchat">CashChat AI</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Container>
+        <Link to="/cashchat" className="btn btn-primary" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '35px' }}>
+  Ask CashChat.ai
+</Link>
+
+
+        </Container>
     
 
 
