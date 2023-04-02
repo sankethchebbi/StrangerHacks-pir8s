@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import About from './components/about';
 import NavigationBar from './components/NavigationBar';
 import Implementation from './components/implementation';
@@ -8,7 +8,6 @@ import Monitor from './components/navComponents/monitor';
 import Optimize from './components/navComponents/optimize';
 import Forecast from './components/navComponents/forecast';
 import MyCard from './components/navComponents/cashchatAI';
-import LoginPage from './components/LoginPage';
 
 import './App.css';
 

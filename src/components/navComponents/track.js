@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Table } from 'react-bootstrap';
+import { Card, Container, Row, Col, Table } from 'react-bootstrap';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import data from './data.json';
 
@@ -16,50 +16,50 @@ function Track() {
 
   return (
     <Container>
-      <Row>
-        <Col>
-          <h1>Track Expenses</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={6}>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Amount Spent</th>
-                <th>Number of Expenses</th>
-              </tr>
-            </thead>
-            <tbody>
-              {categories.map((category) => {
-                const categoryExpenses = expenses.filter(
-                  (expense) => expense.category === category.id
-                );
-                const totalAmountSpent = categoryExpenses.reduce(
-                  (total, expense) => total + expense.amount,
-                  0
-                );
-                return (
-                  <tr key={category.id}>
-                    <td>{category.name}</td>
-                    <td>{totalAmountSpent}</td>
-                    <td>{categoryExpenses.length}</td>
+      <Row className="justify-content-center">
+        <Col md={8}>
+          <Card className="mx-auto" style={{ width: '105%' }}>
+            <Card.Body>
+              <Card.Title>Track Expenses</Card.Title>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Category</th>
+                    <th>Amount Spent</th>
+                    <th>Number of Expenses</th>
                   </tr>
-                );
-              })}
-            </tbody>
-          </Table>
-        </Col>
-        <Col md={6}>
-          <BarChart width={600} height={400} data={chartData}>
-            <CartesianGrid strokeDasharray="3 3" />
-            {/* <XAxis dataKey="name" /> */}
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="amount" fill="#8884d8" />
-          </BarChart>
+                </thead>
+                <tbody>
+                  {categories.map((category) => {
+                    const categoryExpenses = expenses.filter(
+                      (expense) => expense.category === category.id
+                    );
+                    const totalAmountSpent = categoryExpenses.reduce(
+                      (total, expense) => total + expense.amount,
+                      0
+                    );
+                    return (
+                      <tr key={category.id}>
+                        <td>{category.name}</td>
+                        <td>{totalAmountSpent}</td>
+                        <td>{categoryExpenses.length}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
+              <br></br>
+              <br></br>
+              <BarChart width={600} height={400} data={chartData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                {/* <XAxis dataKey="name" /> */}
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="amount" fill="#8884d8" />
+              </BarChart>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>

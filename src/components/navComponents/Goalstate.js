@@ -30,9 +30,7 @@ const GoalState = () => {
           <Form.Label>Current Savings</Form.Label>
           <Form.Control type="number" value={currentSavings} onChange={handleCurrentSavingsChange} />
         </Form.Group>
-        <Button variant="primary" onClick={calculateProgress}>
-          Calculate Progress
-        </Button>
+        
       </Form>
       <br />
       {goal && currentSavings && (

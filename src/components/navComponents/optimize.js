@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Table, Card } from "react-bootstrap";
 import GoalState from './Goalstate';
 
 const ExpenseCategories = () => {
@@ -44,6 +44,9 @@ const ExpenseCategories = () => {
 
   return (
     <div>
+      <Card className="text-center" style={{ maxWidth: "1000px", margin: "0 auto" }}>
+      <Card.Header>Goal State</Card.Header>
+      <Card.Body>
     <Container>
       <h1>Expense Categories</h1>
       <Form onSubmit={handleSubmit}>
@@ -75,7 +78,7 @@ const ExpenseCategories = () => {
       {Object.keys(totals).length > 0 && (
         <>
           <Row>
-            <Col>
+            <Col style={{textAlign: 'center'}}>
               <h3>Expenses</h3>
               <Table striped bordered hover>
                 <thead>
@@ -99,29 +102,21 @@ const ExpenseCategories = () => {
               </Table>
             </Col>
             <Col>
-              <h3>Totals</h3>
-              <Table striped bordered hover>
-              <thead>
-  <tr>
-    <th>Category</th>
-    <th>Total Amount</th>
-  </tr>
-</thead>
-<tbody>
-  {Object.keys(totals).map((category, index) => (
-    <tr key={index}>
-      <td>{category}</td>
-      <td>{totals[category].toFixed(2)} ₹</td>
-    </tr>
-  ))}
-</tbody>
-</Table>
+
 </Col>
 </Row>
 </>
 )}
 </Container>
-<GoalState/><br></br>
+</Card.Body>
+</Card>
+<Card className="text-center" style={{ maxWidth: "1000px", margin: "0 auto" }}>
+  <Card.Header>Goal State</Card.Header>
+  <Card.Body>
+    <GoalState />
+  </Card.Body>
+</Card>
+
 </div>
 );
 };
