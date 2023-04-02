@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Table } from "react-bootstrap";
-import Monitor from "./monitor";
+import GoalState from './Goalstate';
 
 const ExpenseCategories = () => {
   const [expenses, setExpenses] = useState([]);
@@ -121,7 +121,7 @@ const ExpenseCategories = () => {
 </>
 )}
 </Container>
-<Monitor/><br></br>
+<GoalState/><br></br>
 </div>
 );
 };
