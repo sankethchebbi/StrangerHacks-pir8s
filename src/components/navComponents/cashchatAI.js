@@ -39,10 +39,11 @@ export default function MyCard() {
         </Form>
       </Card.Body>
       <Card className="mt-2 mx-auto" style={{ width: '475px' }}>
-      <Card.Body>
-        <p className="text-dark">{response ? response : "Here's your answer"}</p>
-      </Card.Body>
-    </Card><br></br>
+      <Card.Body style={{ textDecorationColor: "lightblue" }}>
+  <p className="text-light">{response ? response : "Here's your answer"}</p>
+</Card.Body>
+
+    </Card><hr></hr>
     </Card>
     
   </div>
